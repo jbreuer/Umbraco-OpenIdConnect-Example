@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "bjxkfwaxF83Eo7KuSqWxEoxQ3ekfVtMWeOZbgnwzequOCWGcMVHZDbPKGPjagCqoi79hdpQjwTfLpXiJD8A7Jw==",
+  "dgSpecHash": "l78Uc+NTpcwPWD5G7k+9Rwarudp9JCUVWzaxRTm5HWQhLQ31ysUP+YgASolMYxMPydNK8wg9B/BLSwSXjO4gMA==",
   "success": true,
   "projectFilePath": "C:\\data\\inetpub\\Umbraco-OpenIdConnect-Example\\Umbraco-OpenIdConnect-Example.Core\\Umbraco-OpenIdConnect-Example.Core.csproj",
   "expectedPackageFiles": [
@@ -227,7 +227,8 @@
     "C:\\Users\\jeroen.breuer\\.nuget\\packages\\umbraco.cms.examine.lucene\\10.1.0\\umbraco.cms.examine.lucene.10.1.0.nupkg.sha512",
     "C:\\Users\\jeroen.breuer\\.nuget\\packages\\umbraco.cms.infrastructure\\10.1.0\\umbraco.cms.infrastructure.10.1.0.nupkg.sha512",
     "C:\\Users\\jeroen.breuer\\.nuget\\packages\\umbraco.cms.publishedcache.nucache\\10.1.0\\umbraco.cms.publishedcache.nucache.10.1.0.nupkg.sha512",
-    "C:\\Users\\jeroen.breuer\\.nuget\\packages\\umbraco.cms.web.common\\10.1.0\\umbraco.cms.web.common.10.1.0.nupkg.sha512"
+    "C:\\Users\\jeroen.breuer\\.nuget\\packages\\umbraco.cms.web.common\\10.1.0\\umbraco.cms.web.common.10.1.0.nupkg.sha512",
+    "C:\\Users\\jeroen.breuer\\.nuget\\packages\\umbraco.cms.web.website\\10.1.0\\umbraco.cms.web.website.10.1.0.nupkg.sha512"
   ],
   "logs": []
 }
