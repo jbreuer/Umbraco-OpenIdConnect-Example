@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Umbraco-OpenIdConnect-Example.Web", "Umbraco-OpenIdConnect-Example.Web\Umbraco-OpenIdConnect-Example.Web.csproj", "{C367BD0D-9CCC-48BA-9BD8-287BFF93433A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbraco-OpenIdConnect-Example.Core", "Umbraco-OpenIdConnect-Example.Core\Umbraco-OpenIdConnect-Example.Core.csproj", "{3FEB72DC-51EF-4988-9D0A-36CD920F9994}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C367BD0D-9CCC-48BA-9BD8-287BFF93433A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C367BD0D-9CCC-48BA-9BD8-287BFF93433A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C367BD0D-9CCC-48BA-9BD8-287BFF93433A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FEB72DC-51EF-4988-9D0A-36CD920F9994}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FEB72DC-51EF-4988-9D0A-36CD920F9994}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FEB72DC-51EF-4988-9D0A-36CD920F9994}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FEB72DC-51EF-4988-9D0A-36CD920F9994}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "c367bd0d-9ccc-48ba-9bd8-287bff93433a": {
+      "ProjectGuid": "c367bd0d-9ccc-48ba-9bd8-287bff93433a",
+      "DisplayName": "Umbraco-OpenIdConnect-Example.Web",
+      "ColorIndex": 0
+    },
+    "3feb72dc-51ef-4988-9d0a-36cd920f9994": {
+      "ProjectGuid": "3feb72dc-51ef-4988-9d0a-36cd920f9994",
+      "DisplayName": "Umbraco-OpenIdConnect-Example.Core",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
