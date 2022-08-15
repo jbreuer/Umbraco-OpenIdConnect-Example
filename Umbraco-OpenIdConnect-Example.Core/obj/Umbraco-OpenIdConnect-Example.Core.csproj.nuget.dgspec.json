@@ -43,6 +43,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.OpenIdConnect": {
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
             "Umbraco.Cms.Core": {
               "target": "Package",
               "version": "[10.1.0, )"

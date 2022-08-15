@@ -4,6 +4,7 @@
 @using Umbraco.Cms.Web.Common.Models
 @using Umbraco.Cms.Web.Website.Controllers
 @using Umbraco.Extensions
+@using Umbraco_OpenIdConnect_Example.Core.Controllers
 
 @{
     var isLoggedIn = Context.User?.Identity?.IsAuthenticated ?? false;
@@ -18,7 +19,7 @@
 
         <p>Welcome back <strong>@Context?.User?.Identity?.Name</strong>!</p>
 
-        @using (Html.BeginUmbracoForm<UmbLoginStatusController>("HandleLogout", new { RedirectUrl = logoutModel.RedirectUrl }))
+        @using (Html.BeginUmbracoForm<ExternalLogoutController>("HandleLogout", new { RedirectUrl = logoutModel.RedirectUrl }))
         {
             <button type="submit" class="btn btn-primary">Log out</button>
         }

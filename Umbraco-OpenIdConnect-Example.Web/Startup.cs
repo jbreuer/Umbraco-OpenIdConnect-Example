@@ -1,5 +1,7 @@
 namespace Umbraco_OpenIdConnect_Example.Web
 {
+    using Core.Extensions;
+
     public class Startup
     {
         private readonly IWebHostEnvironment _env;
@@ -33,6 +35,7 @@ namespace Umbraco_OpenIdConnect_Example.Web
                 .AddBackOffice()
                 .AddWebsite()
                 .AddComposers()
+                .AddOpenIdConnectAuthentication()
                 .Build();
         }
 
