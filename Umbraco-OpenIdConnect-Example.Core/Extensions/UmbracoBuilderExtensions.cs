@@ -24,6 +24,12 @@
                             memberAuthenticationBuilder.SchemeForMembers(OpenIdConnectMemberExternalLoginProviderOptions.SchemeName),
                             options =>
                             {
+                                var config = builder.Config;
+                                var issuerAddress =
+                                    $"{config["OpenIdConnect:LogoutUrl"]}" +
+                                    $"?client_id={config["OpenIdConnect:ClientId"]}" +
+                                    $"&returnTo={WebUtility.UrlEncode(config["OpenIdConnect:ReturnAfterLogout"])}";
+                                
                                 options.ResponseType = "code";
                                 options.Scope.Add("openid");
                                 options.Scope.Add("profile");
@@ -31,9 +37,9 @@
                                 options.Scope.Add("phone");
                                 options.Scope.Add("address");
                                 options.RequireHttpsMetadata = true;
-                                options.MetadataAddress = "https://dev-i92inbjg.us.auth0.com/.well-known/openid-configuration";
-                                options.ClientId = "";
-                                options.ClientSecret = "";
+                                options.MetadataAddress = config["OpenIdConnect:MetadataAddress"];
+                                options.ClientId = config["OpenIdConnect:ClientId"];
+                                options.ClientSecret = config["OpenIdConnect:ClientSecret"];
                                 options.SaveTokens = true;
                                 options.TokenValidationParameters.SaveSigninToken = true;
                                 options.Events.OnTokenValidated = async context =>
@@ -42,13 +48,13 @@
                                     var email = claims?.SingleOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
                                     if (email != null)
                                     {
-                                        claims.Add(new Claim(ClaimTypes.Email, email.Value));
+                                        claims?.Add(new Claim(ClaimTypes.Email, email.Value));
                                     }
                                     
                                     var name = claims?.SingleOrDefault(x => x.Type == "user_displayname");
                                     if (name != null)
                                     {
-                                        claims.Add(new Claim(ClaimTypes.Name, name.Value));
+                                        claims?.Add(new Claim(ClaimTypes.Name, name.Value));
                                     }
 
                                     if (context != null)
@@ -63,7 +69,8 @@
                                 {
                                     var protocolMessage = notification.ProtocolMessage;
 
-                                    protocolMessage.IssuerAddress = "https://dev-i92inbjg.us.auth0.com/v2/logout?client_id=AOXaiUSRn6IH0aX7BKAFY7G7QIDI7HUx&returnTo=" + WebUtility.UrlEncode("https://localhost:44342/");
+                                    protocolMessage.IssuerAddress = issuerAddress;
+                                    
                                     await Task.FromResult(0);
                                 };
                             });
