@@ -39,6 +39,9 @@
                                 options.RequireHttpsMetadata = true;
                                 options.MetadataAddress = config["OpenIdConnect:MetadataAddress"];
                                 options.ClientId = config["OpenIdConnect:ClientId"];
+                                // Normally the ClientSecret should not be in the Github repo.
+                                // These settings are valid and only used for this example.
+                                // So it's ok these are public.
                                 options.ClientSecret = config["OpenIdConnect:ClientSecret"];
                                 options.SaveTokens = true;
                                 options.TokenValidationParameters.SaveSigninToken = true;
