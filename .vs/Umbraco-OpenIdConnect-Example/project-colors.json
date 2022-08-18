@@ -10,6 +10,11 @@
       "ProjectGuid": "3feb72dc-51ef-4988-9d0a-36cd920f9994",
       "DisplayName": "Umbraco-OpenIdConnect-Example.Core",
       "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
     }
   },
   "NextColorIndex": 2
