@@ -5,13 +5,13 @@
     using Microsoft.Extensions.DependencyInjection;
     using Provider;
     using Umbraco.Cms.Core.DependencyInjection;
+    using Umbraco.Cms.Core.Security;
     using Umbraco.Extensions;
 
     public static class UmbracoBuilderExtensions
     {
         public static IUmbracoBuilder AddOpenIdConnectAuthentication(this IUmbracoBuilder builder)
         {
-            // Register GoogleMemberExternalLoginProviderOptions here rather than require it in startup
             builder.Services.ConfigureOptions<OpenIdConnectMemberExternalLoginProviderOptions>();
 
             builder.AddMemberExternalLogins(logins =>
@@ -25,11 +25,6 @@
                             options =>
                             {
                                 var config = builder.Config;
-                                var issuerAddress =
-                                    $"{config["OpenIdConnect:LogoutUrl"]}" +
-                                    $"?client_id={config["OpenIdConnect:ClientId"]}" +
-                                    $"&returnTo={WebUtility.UrlEncode(config["OpenIdConnect:ReturnAfterLogout"])}";
-                                
                                 options.ResponseType = "code";
                                 options.Scope.Add("openid");
                                 options.Scope.Add("profile");
@@ -51,17 +46,22 @@
                                     var email = claims?.SingleOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
                                     if (email != null)
                                     {
+                                        // The email claim is required for auto linking.
+                                        // So get it from another claim and put it in the email claim.
                                         claims?.Add(new Claim(ClaimTypes.Email, email.Value));
                                     }
-                                    
+
                                     var name = claims?.SingleOrDefault(x => x.Type == "user_displayname");
                                     if (name != null)
                                     {
+                                        // The name claim is required for auto linking.
+                                        // So get it from another claim and put it in the name claim.
                                         claims?.Add(new Claim(ClaimTypes.Name, name.Value));
                                     }
 
                                     if (context != null)
                                     {
+                                        // Since we added new claims create a new principal.
                                         var authenticationType = context.Principal?.Identity?.AuthenticationType;
                                         context.Principal = new ClaimsPrincipal(new ClaimsIdentity(claims, authenticationType));
                                     }
@@ -72,8 +72,27 @@
                                 {
                                     var protocolMessage = notification.ProtocolMessage;
 
-                                    protocolMessage.IssuerAddress = issuerAddress;
-                                    
+                                    var logoutUrl = config["OpenIdConnect:LogoutUrl"];
+                                    var returnAfterLogout = config["OpenIdConnect:ReturnAfterLogout"];
+                                    if (!string.IsNullOrEmpty(logoutUrl) && !string.IsNullOrEmpty(returnAfterLogout))
+                                    {
+                                        protocolMessage.IssuerAddress =
+                                            $"{config["OpenIdConnect:LogoutUrl"]}" +
+                                            $"?client_id={config["OpenIdConnect:ClientId"]}" +
+                                            $"&returnTo={WebUtility.UrlEncode(config["OpenIdConnect:ReturnAfterLogout"])}";
+                                    }
+
+                                    var memberManager = notification.HttpContext.RequestServices.GetService<IMemberManager>();
+                                    if (memberManager != null)
+                                    {
+                                        var currentMember = await memberManager.GetCurrentMemberAsync();
+                                        var idToken = currentMember?.LoginTokens?.FirstOrDefault(x => x.Name == "id_token");
+                                        if (idToken != null && !string.IsNullOrEmpty(idToken.Value))
+                                        {
+                                            protocolMessage.IdTokenHint = idToken.Value;
+                                        }
+                                    }
+
                                     await Task.FromResult(0);
                                 };
                             });
@@ -81,6 +100,6 @@
             });
             return builder;
         }
-    }    
+    }  
 }
 
