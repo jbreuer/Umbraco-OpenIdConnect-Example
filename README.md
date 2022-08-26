@@ -22,6 +22,6 @@ Extensions used to setup OpenID Connect and the related events.
 A new controller used for logout on the external login provider.
 
 ## Auth0
-There is a free Auth0 account that this project connects with. The Client ID and Client Secret are already configured for that. Normally the Client Secret should not be in Github, but these settings are only used in this example so it's ok they are public. This is the project:
+There is a free Auth0 account that this project connects with. The Client ID and Client Secret are already <a href="./Umbraco-OpenIdConnect-Example.Web/appsettings.json#L30" target="_blank">configured</a> for that. Normally the Client Secret should not be in Github, but these settings are only used in this example so it's ok they are public. This is the project:
 
-<a href="./auth0.png" target="_blank"><img src="./auth0.png"></a>
+<img src="./auth0.png">
