@@ -37,6 +37,9 @@ Extensions used to setup OpenID Connect and the related events.
 3. <a href="./Umbraco-OpenIdConnect-Example.Core/Controllers/ExternalLogoutController.cs" target="_blank">ExternalLogoutController.cs</a><br />
 A new controller used for logout on the external login provider.
 
+## Short demo
+![Umbraco OpenID Connect demo](./Umbraco-OpenID-Connect-demo.gif)
+
 ## Auth0
 There is a free Auth0 account that this project connects with. The Client ID and Client Secret are already <a href="./Umbraco-OpenIdConnect-Example.Web/appsettings.json#L30" target="_blank">configured</a> for that. Normally the Client Secret should not be in Github, but these settings are only used in this example so it's ok they are public. This is the project:
 
