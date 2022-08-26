@@ -18,6 +18,8 @@
             Configure(options);
         }
 
+        // This method is based on the documentation:
+        // https://our.umbraco.com/documentation/reference/security/auto-linking/#example-for-members
         public void Configure(MemberExternalLoginProviderOptions options)
         {
             options.AutoLinkOptions = new MemberExternalSignInAutoLinkOptions(
@@ -32,10 +34,10 @@
                 defaultCulture: null,
 
                 // Optionally specify the default "IsApprove" status. Must be true for auto-linking.
-                defaultIsApproved:true,
+                defaultIsApproved: true,
 
                 // Optionally specify the member type alias. Default is "Member"
-                defaultMemberTypeAlias:"Member",
+                defaultMemberTypeAlias: "Member",
 
                 // Optionally specify the member groups names to add the auto-linking user to.
                 defaultMemberGroups: new List<string> { "example-group" }

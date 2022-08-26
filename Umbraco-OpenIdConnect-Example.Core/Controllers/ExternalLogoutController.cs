@@ -44,10 +44,16 @@
 
             if (isLoggedIn)
             {   
+                // Trigger logout on the external login provider.
                 await this.HttpContext.SignOutAsync("UmbracoMembers.OpenIdConnect");
+                
+                // Trigger logout on this website.
                 await _signInManager.SignOutAsync();
             }
             
+            // Don't return RedirectToCurrentUmbracoPage.
+            // That will override the location header which is set by the external login provider logout.
+            // So by returning EmptyResult() this will still redirect to the external login provider to logout there. 
             return new EmptyResult();
         }
     }

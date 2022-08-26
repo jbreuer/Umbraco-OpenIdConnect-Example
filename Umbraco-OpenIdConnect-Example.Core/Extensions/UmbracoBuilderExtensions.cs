@@ -76,19 +76,28 @@
                                     var returnAfterLogout = config["OpenIdConnect:ReturnAfterLogout"];
                                     if (!string.IsNullOrEmpty(logoutUrl) && !string.IsNullOrEmpty(returnAfterLogout))
                                     {
+                                        // Some external login providers require an IssuerAddress.
+                                        // It requires the logout URL on the external login provider.
+                                        // It also need the client_id and a URL which it needs to return to after logout.
                                         protocolMessage.IssuerAddress =
                                             $"{config["OpenIdConnect:LogoutUrl"]}" +
                                             $"?client_id={config["OpenIdConnect:ClientId"]}" +
                                             $"&returnTo={WebUtility.UrlEncode(config["OpenIdConnect:ReturnAfterLogout"])}";
                                     }
 
+                                    // Since we're in a static extension method we need this approach to get the member manager. 
                                     var memberManager = notification.HttpContext.RequestServices.GetService<IMemberManager>();
                                     if (memberManager != null)
                                     {
                                         var currentMember = await memberManager.GetCurrentMemberAsync();
-                                        var idToken = currentMember?.LoginTokens?.FirstOrDefault(x => x.Name == "id_token");
+                                        
+                                        // On the current member we can find all their login tokens from the external login provider.
+                                        // These tokens are stored in the umbracoExternalLoginToken table.
+                                        var idToken = currentMember?.LoginTokens.FirstOrDefault(x => x.Name == "id_token");
                                         if (idToken != null && !string.IsNullOrEmpty(idToken.Value))
                                         {
+                                            // Some external login providers need the IdTokenHint.
+                                            // By setting the IdTokenHint the user can be redirected back from the external login provider to this website. 
                                             protocolMessage.IdTokenHint = idToken.Value;
                                         }
                                     }
