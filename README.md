@@ -5,6 +5,22 @@ This example shows how OpenID Connect can be used for members in Umbraco. It's a
 It's based on the external login providers documentation:<br />
 https://our.umbraco.com/documentation/reference/security/external-login-providers/
 
+This example only works on Umbraco 10.2 or higher.
+
+**Backoffice credentials:**
+
+|          	|                                      	|
+|----------	|--------------------------------------	|
+| Username 	| umbraco-openidconnect@mailinator.com 	|
+| Password 	| AKXT9fJGqBvKCVK5TqNZ                 	|
+
+**External member credentials:**
+
+|          	|                                      	|
+|----------	|--------------------------------------	|
+| Username 	| openidconnect-example@mailinator.com 	|
+| Password 	| juSp#&uf4a+omLkigIto                 	|
+
 ## Getting started
 You can watch a getting started video here: https://www.jeroenbreuer.nl/
 
