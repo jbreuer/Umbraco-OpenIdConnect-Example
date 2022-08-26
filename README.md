@@ -8,7 +8,7 @@ https://our.umbraco.com/documentation/reference/security/external-login-provider
 ## Getting started
 You can watch a getting started video here: https://www.jeroenbreuer.nl/
 
-<a href="https://via.placeholder.com/425x250" target="_blank"><img src="https://via.placeholder.com/425x250" height="250"></a>
+<a href="./425x250.png" target="_blank"><img src="./425x250.png" height="250"></a>
 
 ## Important files
 
