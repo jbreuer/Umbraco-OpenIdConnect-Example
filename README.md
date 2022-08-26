@@ -22,9 +22,9 @@ This example only works on Umbraco 10.2 or higher.
 | Password 	| juSp#&uf4a+omLkigIto                 	|
 
 ## Getting started
-You can watch a getting started video here: https://www.jeroenbreuer.nl/
+You can watch a getting started video here: <a href="https://youtu.be/cklH7DtRDIQ" target="_blank">https://youtu.be/cklH7DtRDIQ</a>
 
-<a href="./425x250.png" target="_blank"><img src="./425x250.png" height="250"></a>
+<a href="https://youtu.be/cklH7DtRDIQ" target="_blank"><img src="./Getting-started.png" height="250"></a>
 
 ## Important files
 
