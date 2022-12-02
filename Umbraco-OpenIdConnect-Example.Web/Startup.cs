@@ -1,6 +1,8 @@
 namespace Umbraco_OpenIdConnect_Example.Web
 {
     using Core.Extensions;
+    using Umbraco.Cms.Core.DependencyInjection;
+    using Umbraco.Extensions;
 
     public class Startup
     {
