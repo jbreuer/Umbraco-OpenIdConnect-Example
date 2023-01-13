@@ -1,6 +1,7 @@
 namespace Umbraco_OpenIdConnect_Example.Web
 {
     using Core.Extensions;
+    using Microsoft.Extensions.DependencyInjection;
     using Umbraco.Cms.Core.DependencyInjection;
     using Umbraco.Extensions;
 
@@ -38,7 +39,9 @@ namespace Umbraco_OpenIdConnect_Example.Web
                 .AddWebsite()
                 .AddComposers()
                 .AddOpenIdConnectAuthentication()
+                .AddCustomMemberSignInManager()
                 .Build();
+            
         }
 
         /// <summary>

@@ -1,4 +1,6 @@
-﻿namespace Umbraco_OpenIdConnect_Example.Core.Extensions
+﻿using Umbraco.Cms.Web.Common.Security;
+
+namespace Umbraco_OpenIdConnect_Example.Core.Extensions
 {
     using System.Net;
     using System.Security.Claims;
@@ -107,6 +109,12 @@
                             });
                     });
             });
+            return builder;
+        }
+
+        public static IUmbracoBuilder AddCustomMemberSignInManager(this IUmbracoBuilder builder)
+        {
+            builder.Services.AddScoped<IMemberSignInManager, CustomMemberSignInManager>();
             return builder;
         }
     }  
