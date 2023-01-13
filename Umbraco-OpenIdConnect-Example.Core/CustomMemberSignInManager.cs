@@ -128,32 +128,23 @@ public class CustomMemberSignInManager : UmbracoSignInManager<MemberIdentityUser
     ///     Custom ExternalLoginSignInAsync overload for handling external sign in with auto-linking
     /// </summary>
     public async Task<SignInResult> ExternalLoginSignInAsync(ExternalLoginInfo loginInfo, bool isPersistent, bool bypassTwoFactor = false)
-    {
-        // borrowed from https://github.com/dotnet/aspnetcore/blob/master/src/Identity/Core/src/SignInManager.cs
-        // to be able to deal with auto-linking and reduce duplicate lookups
-        MemberExternalSignInAutoLinkOptions? autoLinkOptions =
-            (await _memberExternalLoginProviders.GetAsync(loginInfo.LoginProvider))?.ExternalLoginProvider.Options.AutoLinkOptions;
-        MemberIdentityUser? user = await UserManager.FindByLoginAsync(loginInfo.LoginProvider, loginInfo.ProviderKey);
-        if (user == null)
+    {   
+        var user = new MemberIdentityUser
         {
-            // user doesn't exist so see if we can auto link
-            return await AutoLinkAndSignInExternalAccount(loginInfo, autoLinkOptions);
-        }
+            Id = "1234",
+            UserName = "someUsername"
+        };
+        
+        user.Claims.Add(new IdentityUserClaim<string>() { ClaimType = ClaimTypes.Role, ClaimValue = "example-group" });
+        user.AddRole("example-group");
 
-        if (autoLinkOptions != null && autoLinkOptions.OnExternalLogin != null)
+        foreach(var claim in loginInfo.Principal.Claims)
         {
-            var shouldSignIn = autoLinkOptions.OnExternalLogin(user, loginInfo);
-            if (shouldSignIn == false)
+            user.Claims.Add(new IdentityUserClaim<string>
             {
-                LogFailedExternalLogin(loginInfo, user);
-                return ExternalLoginSignInResult.NotAllowed;
-            }
-        }
-
-        SignInResult? error = await PreSignInCheck(user);
-        if (error != null)
-        {
-            return error;
+                ClaimType = claim.Type,
+                ClaimValue = claim.Value
+            });
         }
 
         return await SignInOrTwoFactorAsync(user, isPersistent, loginInfo.LoginProvider, bypassTwoFactor);
