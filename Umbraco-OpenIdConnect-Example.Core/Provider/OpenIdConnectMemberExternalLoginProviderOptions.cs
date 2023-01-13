@@ -8,7 +8,7 @@
     public class OpenIdConnectMemberExternalLoginProviderOptions : IConfigureNamedOptions<MemberExternalLoginProviderOptions>
     {
         public const string SchemeName = "OpenIdConnect";
-        public void Configure(string name, MemberExternalLoginProviderOptions options)
+        public void Configure(string? name, MemberExternalLoginProviderOptions options)
         {
             if (name != Constants.Security.MemberExternalAuthenticationTypePrefix + SchemeName)
             {
