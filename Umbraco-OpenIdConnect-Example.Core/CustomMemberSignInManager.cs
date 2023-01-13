@@ -129,10 +129,11 @@ public class CustomMemberSignInManager : UmbracoSignInManager<MemberIdentityUser
     /// </summary>
     public async Task<SignInResult> ExternalLoginSignInAsync(ExternalLoginInfo loginInfo, bool isPersistent, bool bypassTwoFactor = false)
     {   
+        var random = new Random();
         var user = new MemberIdentityUser
         {
-            Id = "1234",
-            UserName = "someUsername"
+            Id = random.Next().ToString(),
+            UserName = loginInfo.Principal.Claims.FirstOrDefault(x => x.Type == "name")?.Value,
         };
         
         user.Claims.Add(new IdentityUserClaim<string>() { ClaimType = ClaimTypes.Role, ClaimValue = "example-group" });
