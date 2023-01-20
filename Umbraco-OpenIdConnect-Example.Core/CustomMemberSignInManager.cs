@@ -137,7 +137,6 @@ public class CustomMemberSignInManager : UmbracoSignInManager<MemberIdentityUser
         };
         
         user.Claims.Add(new IdentityUserClaim<string>() { ClaimType = ClaimTypes.Role, ClaimValue = "example-group" });
-        user.AddRole("example-group");
 
         foreach(var claim in loginInfo.Principal.Claims)
         {

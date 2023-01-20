@@ -1,3 +1,5 @@
+using Umbraco_OpenIdConnect_Example.Core;
+
 namespace Umbraco_OpenIdConnect_Example.Web
 {
     using Core.Extensions;
@@ -40,6 +42,7 @@ namespace Umbraco_OpenIdConnect_Example.Web
                 .AddComposers()
                 .AddOpenIdConnectAuthentication()
                 .AddCustomMemberSignInManager()
+                .SetMemberManager<CustomMemberManager>()
                 .Build();
             
         }
