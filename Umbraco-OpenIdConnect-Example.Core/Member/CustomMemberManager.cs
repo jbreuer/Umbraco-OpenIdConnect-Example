@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Umbraco_OpenIdConnect_Example.Core.Extensions;
 using Umbraco.Cms.Core.Configuration.Models;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.Net;
@@ -200,21 +201,7 @@ public class CustomMemberManager : UmbracoUserManager<MemberIdentityUser, Member
     public override Task<MemberIdentityUser?> GetUserAsync(ClaimsPrincipal principal)
     {
         var id = GetUserId(principal);
-        var user = new MemberIdentityUser
-        {
-            Id = id,
-            UserName = principal.Claims.FirstOrDefault(x => x.Type == "name")?.Value,
-        };
-        
-        foreach(var claim in principal.Claims)
-        {
-            user.Claims.Add(new IdentityUserClaim<string>
-            {
-                ClaimType = claim.Type,
-                ClaimValue = claim.Value
-            });
-        }
-        user.IsApproved = true;
+        var user = this.CreateVirtualUser(id, principal.Claims);
 
         return Task.FromResult(user);
     }

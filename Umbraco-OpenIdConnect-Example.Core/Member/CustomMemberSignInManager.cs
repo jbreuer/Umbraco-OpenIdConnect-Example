@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Umbraco_OpenIdConnect_Example.Core.Extensions;
 using Umbraco.Cms.Core.DependencyInjection;
 using Umbraco.Cms.Core.Events;
 using Umbraco.Cms.Core.Notifications;
@@ -19,6 +20,7 @@ namespace Umbraco_OpenIdConnect_Example.Core.Member;
 /// </summary>
 public class CustomMemberSignInManager : UmbracoSignInManager<MemberIdentityUser>, IMemberSignInManager
 {
+    private readonly IMemberManager _memberManager;
     private readonly IEventAggregator _eventAggregator;
     private readonly IMemberExternalLoginProviders _memberExternalLoginProviders;
 
@@ -34,6 +36,7 @@ public class CustomMemberSignInManager : UmbracoSignInManager<MemberIdentityUser
         IEventAggregator eventAggregator)
         : base(memberManager, contextAccessor, claimsFactory, optionsAccessor, logger, schemes, confirmation)
     {
+        _memberManager = (IMemberManager)memberManager;
         _memberExternalLoginProviders = memberExternalLoginProviders;
         _eventAggregator = eventAggregator;
     }
@@ -128,24 +131,11 @@ public class CustomMemberSignInManager : UmbracoSignInManager<MemberIdentityUser
     ///     Custom ExternalLoginSignInAsync overload for handling external sign in with auto-linking
     /// </summary>
     public async Task<SignInResult> ExternalLoginSignInAsync(ExternalLoginInfo loginInfo, bool isPersistent, bool bypassTwoFactor = false)
-    {   
-        var random = new Random();
-        var user = new MemberIdentityUser
-        {
-            Id = random.Next().ToString(),
-            UserName = loginInfo.Principal.Claims.FirstOrDefault(x => x.Type == "name")?.Value,
-        };
-        
+    {
+        var claims = loginInfo.Principal.Claims;
+        var id = claims.FirstOrDefault(x => x.Type == "sid")?.Value;
+        var user = _memberManager.CreateVirtualUser(id, loginInfo.Principal.Claims);
         user.Claims.Add(new IdentityUserClaim<string>() { ClaimType = ClaimTypes.Role, ClaimValue = "example-group" });
-
-        foreach(var claim in loginInfo.Principal.Claims)
-        {
-            user.Claims.Add(new IdentityUserClaim<string>
-            {
-                ClaimType = claim.Type,
-                ClaimValue = claim.Value
-            });
-        }
 
         return await SignInOrTwoFactorAsync(user, isPersistent, loginInfo.LoginProvider, bypassTwoFactor);
     }
