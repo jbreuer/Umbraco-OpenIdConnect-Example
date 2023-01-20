@@ -3,7 +3,6 @@
     using System.Net;
     using System.Security.Claims;
     using Microsoft.Extensions.DependencyInjection;
-    using Provider;
     using Umbraco.Cms.Web.Common.Security;
     using Umbraco.Cms.Core.DependencyInjection;
     using Umbraco.Cms.Core.Security;
@@ -14,8 +13,6 @@
     {
         public static IUmbracoBuilder AddOpenIdConnectAuthentication(this IUmbracoBuilder builder)
         {
-            builder.Services.ConfigureOptions<OpenIdConnectMemberExternalLoginProviderOptions>();
-
             builder.AddMemberExternalLogins(logins =>
             {
                 logins.AddMemberLogin(
@@ -23,7 +20,7 @@
                     {
                         memberAuthenticationBuilder.AddOpenIdConnect(
                             // The scheme must be set with this method to work for the umbraco members
-                            memberAuthenticationBuilder.SchemeForMembers(OpenIdConnectMemberExternalLoginProviderOptions.SchemeName),
+                            memberAuthenticationBuilder.SchemeForMembers("OpenIdConnect"),
                             options =>
                             {
                                 var config = builder.Config;
