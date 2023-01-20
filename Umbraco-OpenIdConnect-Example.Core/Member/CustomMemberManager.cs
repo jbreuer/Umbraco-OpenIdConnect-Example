@@ -11,7 +11,7 @@ using Umbraco.Cms.Core.Security;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Extensions;
 
-namespace Umbraco_OpenIdConnect_Example.Core;
+namespace Umbraco_OpenIdConnect_Example.Core.Member;
 
 public class CustomMemberManager : UmbracoUserManager<MemberIdentityUser, MemberPasswordConfigurationSettings>, IMemberManager
 {

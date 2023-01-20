@@ -12,7 +12,7 @@ using Umbraco.Cms.Core.Security;
 using Umbraco.Cms.Web.Common.Security;
 using Umbraco.Extensions;
 
-namespace Umbraco_OpenIdConnect_Example.Core;
+namespace Umbraco_OpenIdConnect_Example.Core.Member;
 
 /// <summary>
 ///     The sign in manager for members

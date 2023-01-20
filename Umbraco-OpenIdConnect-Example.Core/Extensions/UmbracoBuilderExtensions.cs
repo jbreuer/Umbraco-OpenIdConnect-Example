@@ -1,14 +1,14 @@
-﻿using Umbraco.Cms.Web.Common.Security;
-
-namespace Umbraco_OpenIdConnect_Example.Core.Extensions
+﻿namespace Umbraco_OpenIdConnect_Example.Core.Extensions
 {
     using System.Net;
     using System.Security.Claims;
     using Microsoft.Extensions.DependencyInjection;
     using Provider;
+    using Umbraco.Cms.Web.Common.Security;
     using Umbraco.Cms.Core.DependencyInjection;
     using Umbraco.Cms.Core.Security;
     using Umbraco.Extensions;
+    using Member;
 
     public static class UmbracoBuilderExtensions
     {

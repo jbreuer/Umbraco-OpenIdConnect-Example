@@ -1,8 +1,7 @@
-using Umbraco_OpenIdConnect_Example.Core;
-
 namespace Umbraco_OpenIdConnect_Example.Web
 {
     using Core.Extensions;
+    using Core.Member;
     using Microsoft.Extensions.DependencyInjection;
     using Umbraco.Cms.Core.DependencyInjection;
     using Umbraco.Extensions;
