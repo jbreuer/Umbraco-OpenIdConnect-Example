@@ -132,9 +132,15 @@ public class CustomMemberSignInManager : UmbracoSignInManager<MemberIdentityUser
     /// </summary>
     public async Task<SignInResult> ExternalLoginSignInAsync(ExternalLoginInfo loginInfo, bool isPersistent, bool bypassTwoFactor = false)
     {
+        // In the default implementation, the member is fetched from the database.
+        // The default implementation also tries to create the member with the auto link feature if it doesn't exist.
+        // The auto link feature has been removed here because the member is from an external login provider.
+        // We just build a virtual member from the external login info.
         var claims = loginInfo.Principal.Claims;
         var id = claims.FirstOrDefault(x => x.Type == "sid")?.Value;
         var user = _memberManager.CreateVirtualUser(id, loginInfo.Principal.Claims);
+        
+        // For now hard code the role. These could be claims from the external login provider.
         user.Claims.Add(new IdentityUserClaim<string>() { ClaimType = ClaimTypes.Role, ClaimValue = "example-group" });
 
         return await SignInOrTwoFactorAsync(user, isPersistent, loginInfo.LoginProvider, bypassTwoFactor);

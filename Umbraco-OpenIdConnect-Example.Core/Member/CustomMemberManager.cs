@@ -201,6 +201,9 @@ public class CustomMemberManager : UmbracoUserManager<MemberIdentityUser, Member
     public override Task<MemberIdentityUser?> GetUserAsync(ClaimsPrincipal principal)
     {
         var id = GetUserId(principal);
+        
+        // In the default implementation, the member is fetched from the database.
+        // Since our member is from an external login provider we just build a virtual member.
         var user = this.CreateVirtualUser(id, principal.Claims);
 
         return Task.FromResult(user);
@@ -208,6 +211,7 @@ public class CustomMemberManager : UmbracoUserManager<MemberIdentityUser, Member
 
     public override Task<IList<string>> GetRolesAsync(MemberIdentityUser user)
     {
+        // Multiple roles could be supported, but we don't need them in this example.
         var role = user.Claims.FirstOrDefault(x => x.ClaimType == ClaimTypes.Role)?.ClaimValue;
         var roles = new List<string>
         {
