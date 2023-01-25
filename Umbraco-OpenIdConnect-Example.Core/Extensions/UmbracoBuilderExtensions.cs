@@ -57,6 +57,16 @@
                                         // So get it from another claim and put it in the name claim.
                                         claims?.Add(new Claim(ClaimTypes.Name, name.Value));
                                     }
+                                    
+                                    var claimsIdentity = context.Principal.Identity as ClaimsIdentity;
+                                    if (claimsIdentity != null)
+                                    {
+                                        var idToken = claimsIdentity.BootstrapContext.ToString();
+                                        if (!string.IsNullOrEmpty(idToken))
+                                        {
+                                            claims?.Add(new Claim("id_token", idToken));
+                                        }
+                                    }
 
                                     if (context != null)
                                     {

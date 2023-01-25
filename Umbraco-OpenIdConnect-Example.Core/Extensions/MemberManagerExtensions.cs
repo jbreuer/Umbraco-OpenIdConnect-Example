@@ -23,6 +23,12 @@ public static class MemberManagerExtensions
             });
         }
         user.IsApproved = true;
+        
+        var idToken = claims.FirstOrDefault(x => x.Type == "id_token")?.Value;
+        if (!string.IsNullOrEmpty(idToken))
+        {
+            // TODO add id_token to the user.
+        }
 
         return user;
     }
