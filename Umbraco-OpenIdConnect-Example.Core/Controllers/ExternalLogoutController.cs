@@ -49,6 +49,12 @@
                 
                 // Trigger logout on this website.
                 await _signInManager.SignOutAsync();
+
+                var cookies = Request.Cookies;
+                foreach (var cookie in cookies)
+                {
+                    Response.Cookies.Delete(cookie.Key);  
+                }
             }
             
             // Don't return RedirectToCurrentUmbracoPage.
