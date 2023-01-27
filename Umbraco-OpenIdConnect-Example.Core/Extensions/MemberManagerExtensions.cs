@@ -27,7 +27,12 @@ public static class MemberManagerExtensions
         var idToken = claims.FirstOrDefault(x => x.Type == "id_token")?.Value;
         if (!string.IsNullOrEmpty(idToken))
         {
-            // TODO add id_token to the user.
+            var loginIdToken = new IdentityUserToken(
+                loginProvider: "UmbracoMembers.OpenIdConnect",
+                name: "id_token",
+                value: idToken,
+                userId: null);
+            user.LoginTokens.Add(loginIdToken);
         }
 
         return user;
