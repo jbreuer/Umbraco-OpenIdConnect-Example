@@ -17,12 +17,31 @@ namespace Umbraco_OpenIdConnect_Example.Core.Member;
 
 public class CustomMemberManager : MemberManager
 {
-    private readonly IHttpContextAccessor _httpContextAccessor;
-    private readonly IPublicAccessService _publicAccessService;
-    private readonly IMemberUserStore _store;
-    private MemberIdentityUser? _currentMember;
-
-    public CustomMemberManager(IIpResolver ipResolver, IMemberUserStore store, IOptions<IdentityOptions> optionsAccessor, IPasswordHasher<MemberIdentityUser> passwordHasher, IEnumerable<IUserValidator<MemberIdentityUser>> userValidators, IEnumerable<IPasswordValidator<MemberIdentityUser>> passwordValidators, IdentityErrorDescriber errors, IServiceProvider services, ILogger<UserManager<MemberIdentityUser>> logger, IOptionsSnapshot<MemberPasswordConfigurationSettings> passwordConfiguration, IPublicAccessService publicAccessService, IHttpContextAccessor httpContextAccessor) : base(ipResolver, store, optionsAccessor, passwordHasher, userValidators, passwordValidators, errors, services, logger, passwordConfiguration, publicAccessService, httpContextAccessor)
+    public CustomMemberManager(
+        IIpResolver ipResolver, 
+        IMemberUserStore store, 
+        IOptions<IdentityOptions> optionsAccessor, 
+        IPasswordHasher<MemberIdentityUser> passwordHasher,
+        IEnumerable<IUserValidator<MemberIdentityUser>> userValidators,
+        IEnumerable<IPasswordValidator<MemberIdentityUser>> passwordValidators,
+        IdentityErrorDescriber errors,
+        IServiceProvider services,
+        ILogger<UserManager<MemberIdentityUser>> logger,
+        IOptionsSnapshot<MemberPasswordConfigurationSettings> passwordConfiguration,
+        IPublicAccessService publicAccessService,
+        IHttpContextAccessor httpContextAccessor) : base(
+        ipResolver,
+        store,
+        optionsAccessor,
+        passwordHasher,
+        userValidators,
+        passwordValidators,
+        errors,
+        services,
+        logger,
+        passwordConfiguration,
+        publicAccessService,
+        httpContextAccessor)
     {
     }
 
@@ -32,9 +51,9 @@ public class CustomMemberManager : MemberManager
         
         // In the default implementation, the member is fetched from the database.
         // Since our member is from an external login provider we just build a virtual member.
-        var user = this.CreateVirtualUser(id, principal.Claims);
+        var member = this.CreateVirtualMember(id, principal.Claims);
         
-        return Task.FromResult(user);
+        return Task.FromResult(member);
     }
 
     public override Task<IList<string>> GetRolesAsync(MemberIdentityUser user)

@@ -59,10 +59,10 @@ public class CustomMemberSignInManager : MemberSignInManager
     {
     }
     
-    /// <summary>
-    ///     Custom ExternalLoginSignInAsync overload for handling external sign in with auto-linking
-    /// </summary>
-    public override async Task<SignInResult> ExternalLoginSignInAsync(ExternalLoginInfo loginInfo, bool isPersistent, bool bypassTwoFactor = false)
+    public override async Task<SignInResult> ExternalLoginSignInAsync(
+        ExternalLoginInfo loginInfo, 
+        bool isPersistent, 
+        bool bypassTwoFactor = false)
     {
         // In the default implementation, the member is fetched from the database.
         // The default implementation also tries to create the member with the auto link feature if it doesn't exist.
@@ -70,11 +70,11 @@ public class CustomMemberSignInManager : MemberSignInManager
         // We just build a virtual member from the external login info.
         var claims = loginInfo.Principal.Claims;
         var id = claims.FirstOrDefault(x => x.Type == "sid")?.Value;
-        var user = _memberManager.CreateVirtualUser(id, loginInfo.Principal.Claims);
+        var member = _memberManager.CreateVirtualMember(id, loginInfo.Principal.Claims);
         
         // For now hard code the role. These could be claims from the external login provider.
-        user.Claims.Add(new IdentityUserClaim<string>() { ClaimType = ClaimTypes.Role, ClaimValue = "example-group" });
+        member.Claims.Add(new IdentityUserClaim<string>() { ClaimType = ClaimTypes.Role, ClaimValue = "example-group" });
 
-        return await SignInOrTwoFactorAsync(user, isPersistent, loginInfo.LoginProvider, bypassTwoFactor);
+        return await SignInOrTwoFactorAsync(member, isPersistent, loginInfo.LoginProvider, bypassTwoFactor);
     }
 }
