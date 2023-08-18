@@ -58,6 +58,16 @@
                                         // So get it from another claim and put it in the name claim.
                                         claims?.Add(new Claim(ClaimTypes.Name, name.Value));
                                     }
+                                    else
+                                    {
+                                        name = claims?.SingleOrDefault(x => x.Type == "nickname");
+                                        if (name != null)
+                                        {
+                                            // The name claim is required for auto linking.
+                                            // So get it from another claim and put it in the name claim.
+                                            claims?.Add(new Claim(ClaimTypes.Name, name.Value));
+                                        }    
+                                    }
 
                                     if (context != null)
                                     {
