@@ -1,17 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>Umbraco_OpenIdConnect_Example.Core</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="7.0.13" />
-    <PackageReference Include="Umbraco.Cms.Core" Version="12.3.0-rc" />
-    <PackageReference Include="Umbraco.Cms.Web.Common" Version="12.3.0-rc" />
-    <PackageReference Include="Umbraco.Cms.Web.Website" Version="12.3.0-rc" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.0" />
+    <PackageReference Include="Umbraco.Cms.Core" Version="13.0.0-rc3" />
+    <PackageReference Include="Umbraco.Cms.Web.Common" Version="13.0.0-rc3" />
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="13.0.0-rc3" />
   </ItemGroup>
 
 </Project>
