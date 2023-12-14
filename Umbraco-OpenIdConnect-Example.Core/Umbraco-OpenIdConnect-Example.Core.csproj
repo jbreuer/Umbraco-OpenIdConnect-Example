@@ -9,9 +9,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.0" />
-    <PackageReference Include="Umbraco.Cms.Core" Version="13.0.0-rc3" />
-    <PackageReference Include="Umbraco.Cms.Web.Common" Version="13.0.0-rc3" />
-    <PackageReference Include="Umbraco.Cms.Web.Website" Version="13.0.0-rc3" />
+    <PackageReference Include="Umbraco.Cms.Core" Version="13.0.0" />
+    <PackageReference Include="Umbraco.Cms.Web.Common" Version="13.0.0" />
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="13.0.0" />
   </ItemGroup>
 
 </Project>

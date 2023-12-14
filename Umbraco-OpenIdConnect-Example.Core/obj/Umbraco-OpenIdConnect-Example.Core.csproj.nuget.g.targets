@@ -5,6 +5,7 @@
     <Import Project="$(NuGetPackageRoot)microsoft.extensions.configuration.binder\8.0.0\buildTransitive\netstandard2.0\Microsoft.Extensions.Configuration.Binder.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.configuration.binder\8.0.0\buildTransitive\netstandard2.0\Microsoft.Extensions.Configuration.Binder.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\8.0.0\buildTransitive\net6.0\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\8.0.0\buildTransitive\net6.0\Microsoft.Extensions.Logging.Abstractions.targets')" />
     <Import Project="$(NuGetPackageRoot)system.text.json\8.0.0\buildTransitive\net6.0\System.Text.Json.targets" Condition="Exists('$(NuGetPackageRoot)system.text.json\8.0.0\buildTransitive\net6.0\System.Text.Json.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.codeanalysis.analyzers\3.3.4\buildTransitive\Microsoft.CodeAnalysis.Analyzers.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.codeanalysis.analyzers\3.3.4\buildTransitive\Microsoft.CodeAnalysis.Analyzers.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.mvc.razor.runtimecompilation\8.0.0\buildTransitive\net8.0\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.mvc.razor.runtimecompilation\8.0.0\buildTransitive\net8.0\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.targets')" />
   </ImportGroup>
 </Project>
