@@ -26,6 +26,11 @@ You can watch a getting started video here: <a href="https://youtu.be/cklH7DtRDI
 
 <a href="https://youtu.be/cklH7DtRDIQ" target="_blank"><img src="./Getting-started.png" height="250"></a>
 
+## Online presentation
+You can watch my online presentation here: <a href="https://youtu.be/I4ysh-czrYk" target="_blank">https://youtu.be/I4ysh-czrYk</a>
+
+<a href="https://youtu.be/I4ysh-czrYk" target="_blank"><img src="./Umbraco-Community-Day-External-login-providers.jpg" height="250"></a>
+
 ## Important files
 
 All important files that are used for this setup are in the ```Umbraco-OpenIdConnect-Example.Core``` project.
