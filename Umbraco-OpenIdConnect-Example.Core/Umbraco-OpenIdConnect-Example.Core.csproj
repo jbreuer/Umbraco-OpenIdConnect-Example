@@ -8,10 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.0" />
-    <PackageReference Include="Umbraco.Cms.Core" Version="13.0.0" />
-    <PackageReference Include="Umbraco.Cms.Web.Common" Version="13.0.0" />
-    <PackageReference Include="Umbraco.Cms.Web.Website" Version="13.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.1" />
+    <PackageReference Include="Umbraco.Cms.Core" Version="13.1.0" />
+    <PackageReference Include="Umbraco.Cms.Web.Common" Version="13.1.0" />
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="13.1.0" />
   </ItemGroup>
 
 </Project>
