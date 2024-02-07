@@ -21,6 +21,9 @@ This example only works on Umbraco 10.2 or higher.
 | Username 	| openidconnect-example@mailinator.com 	|
 | Password 	| juSp#&uf4a+omLkigIto                 	|
 
+> [!TIP]
+> I also created a [fork of the Umbraco Delivery API - member auth demo](https://github.com/jbreuer/UmbracoDeliveryApiAuthDemo). It adds support for external login providers. See this [pull request](https://github.com/jbreuer/UmbracoDeliveryApiAuthDemo/pull/1) for all the changes. You can also find more info in [this blog](https://www.jeroenbreuer.nl/blog/umbraco-headless-member-auth-with-external-login-providers/).
+
 ## Getting started
 You can watch a getting started video here: <a href="https://youtu.be/cklH7DtRDIQ" target="_blank">https://youtu.be/cklH7DtRDIQ</a>
 
