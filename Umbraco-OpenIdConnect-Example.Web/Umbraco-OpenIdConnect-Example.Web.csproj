@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Umbraco.Cms" Version="13.1.0" />
+    <PackageReference Include="Umbraco.Cms" Version="13.2.0" />
     <PackageReference Include="Umbraco.TheStarterKit" Version="10.0.0" />
   </ItemGroup>
 
