@@ -3,10 +3,11 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>Umbraco_OpenIdConnect_Example_v14_</RootNamespace>
+    <RootNamespace>Umbraco_OpenIdConnect_Example_v14plus</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.8" />
     <PackageReference Include="Umbraco.Cms" Version="14.2.0" />
     <PackageReference Include="Umbraco.TheStarterKit" Version="14.0.0" />
   </ItemGroup>
