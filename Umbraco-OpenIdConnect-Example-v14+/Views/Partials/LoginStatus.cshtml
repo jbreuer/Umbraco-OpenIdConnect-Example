@@ -1,6 +1,7 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 
 @using Microsoft.AspNetCore.Http.Extensions
+@using Umbraco_OpenIdConnect_Example_v14plus.Controllers
 @using Umbraco.Cms.Web.Common.Models
 @using Umbraco.Cms.Web.Website.Controllers
 @using Umbraco.Extensions
@@ -18,7 +19,7 @@
 
         <p>Welcome back <strong>@Context?.User?.Identity?.Name</strong>!</p>
 
-        @using (Html.BeginUmbracoForm<UmbLoginStatusController>("HandleLogout", new { RedirectUrl = logoutModel.RedirectUrl }))
+        @using (Html.BeginUmbracoForm<ExternalLogoutController>("HandleLogout", new { RedirectUrl = logoutModel.RedirectUrl }))
         {
             <button type="submit" class="btn btn-primary">Log out</button>
         }
