@@ -3,9 +3,10 @@
 This example shows how OpenID Connect can be used for members in Umbraco. It's a complete Umbraco solution with a SQLite database. Everything is already configured correct so you can just download the project and run it. 
 
 It's based on the external login providers documentation:<br />
-https://our.umbraco.com/documentation/reference/security/external-login-providers/
+https://docs.umbraco.com/umbraco-cms/reference/security/external-login-providers
 
-This example only works on Umbraco 10.2 or higher.
+There are two versions of this example. The **v13 version** can be found in [`Umbraco-OpenIdConnect-Example.Web`](./Umbraco-OpenIdConnect-Example.Web), which references [`Umbraco-OpenIdConnect-Example.Core`](./Umbraco-OpenIdConnect-Example.Core). The **v14+ version** has been completely rebuilt and can be found in [`Umbraco-OpenIdConnect-Example-v14+`](./Umbraco-OpenIdConnect-Example-v14+), offering full compatibility with Umbraco v14 and above.
+
 
 **Backoffice credentials:**
 
