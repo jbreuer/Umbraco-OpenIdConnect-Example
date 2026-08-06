@@ -6,7 +6,7 @@
     var defaultCurrency = Model.Parent<Products>().DefaultCurrency;
 }
 <!-- for the section we want to show the shop header -->
-@Html.Partial("~/Views/Partials/SectionHeader.cshtml", Model.Parent)
+@Html.Partial("~/Views/Partials/SectionHeader.cshtml", Model.Parent())
 
 <section class="section">
     <div class="container">
